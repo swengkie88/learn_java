@@ -1,46 +1,37 @@
 import java.util.Scanner;
 class Truk{
-    double muatan, muatanmaks;
+    private double muatan, muatanmaks;
 
-    Truk(double beratmaks){
+    public Truk(double beratmaks){
         this.muatanmaks = beratmaks;
     }
-    double getMuatan(){
+    public double getMuatan(){
         return muatan;
     }
-    double getMuatanMaks(){ 
+    public double getMuatanMaks(){ 
         return muatanmaks;    
     }
-    double tambahMuatan(double berat)  {
-        this.muatan = berat;
-        return berat;
+    public double tambahMuatan(double berat)  {
+        return this.muatan += berat;
     }
 }
-class DemoTruk{
+public class DemoTruk{
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         Truk truk = new Truk(1000);
-        System.out.print("Muatan maksimal : ");
-        System.out.print(truk.getMuatanMaks());
-         
-        System.out.print("\n");
-        double total;
-        total = 0;
+        System.out.print("Muatan maksimal : " + truk.getMuatanMaks() + "\n");
         
         for(int i = 1; i<=4; i++){
             System.out.print("Tambah Muatan : ");
-            truk.muatan = input.nextDouble();
-            total += truk.muatan;
-            if(total > truk.muatanmaks){
+            // double muatan2 = truk.getMuatan();
+            double jumlahMuatan = input.nextDouble();
+            truk.tambahMuatan(jumlahMuatan);
+            if(truk.getMuatan() > truk.getMuatanMaks()){
+                System.out.println("\nAnda telah melebihi muatan maksimal");
                 break;
             }
         }
-        System.out.print("\n");
-        System.out.print("Muatan sekarang = " + total);
-        if(total > truk.muatanmaks){
-            System.out.print("\n");
-            System.out.print("Anda sudah melebihi muatan maksimal");
-        }
+        System.out.print("Muatan sekarang = " + truk.getMuatan());
 
     }
 }
