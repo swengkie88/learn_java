@@ -14,6 +14,9 @@ class Truk{
     public double tambahMuatan(double berat)  {
         return this.muatan += berat;
     }
+    public double hitungKelebihan(){
+        return muatan-muatanmaks;
+    }
 }
 public class DemoTruk{
     public static void main(String[] args){
@@ -27,11 +30,13 @@ public class DemoTruk{
             double jumlahMuatan = input.nextDouble();
             truk.tambahMuatan(jumlahMuatan);
             if(truk.getMuatan() > truk.getMuatanMaks()){
-                System.out.println("\nAnda telah melebihi muatan maksimal");
+                System.out.println("=====================================");
+                System.out.println("Anda telah melebihi muatan maksimal");
                 break;
             }
         }
-        System.out.print("Muatan sekarang = " + truk.getMuatan());
+        System.out.println("Muatan sekarang = " + truk.getMuatan());
+        System.out.println("Muatan berlebih sejumlah = " + truk.hitungKelebihan());
 
     }
 }
